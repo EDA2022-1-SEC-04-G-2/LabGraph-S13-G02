@@ -83,7 +83,7 @@ def optionThree(cont):
 
 
 def optionFour(cont, initialStation):
-    controller.minimumCostPaths(cont, initialStation)
+    return controller.minimumCostPaths(cont, initialStation)
 
 
 def optionFive(cont, destStation):
@@ -94,7 +94,7 @@ def optionFive(cont, destStation):
 
 
 def optionSix(cont, destStation):
-    path = controller.minimumCostPath(cont, destStation)
+    path = controller.minimumCostPath(cont, destStation)[0]
     if path is not None:
         pathlen = stack.size(path)
         print('El camino es de longitud: ' + str(pathlen))
@@ -135,7 +135,9 @@ def thread_cycle():
         elif int(inputs[0]) == 4:
             msg = "Estación Base: BusStopCode-ServiceNo (Ej: 75009-10): "
             initialStation = input(msg)
-            optionFour(cont, initialStation)
+            tiempo=optionFour(cont, initialStation)
+            print("El tiempo de ejecución fue "+str(tiempo)+" ms")
+
 
         elif int(inputs[0]) == 5:
             destStation = input("Estación destino (Ej: 15151-10): ")
